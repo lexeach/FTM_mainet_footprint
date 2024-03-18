@@ -324,7 +324,8 @@ const Dashboard = () => {
       let all = Number(pool1_price) + Number(registration_Free);
       let total =
          Number(all) + Number((all * taxRate) / 100);
-      let amount = web3.utils.toWei(total.toString(), "ether");
+      //let amount = web3.utils.toWei(total.toString(), "ether");
+      let amount = web3.utils.toWei(total.toString());
       let FPrint_ = new web3.eth.Contract(FPrint.ABI, FPrint.address);
       let USDT_ = new web3.eth.Contract(USDT.ABI, USDT.address);
       let isAllowance = await USDT_.methods
@@ -467,7 +468,7 @@ const Dashboard = () => {
                <h5>Registration Amount</h5>
                <h4 className="mb-0">
                {registration_Free && pool1_price && taxRate
-               ? ((parseFloat(registration_Free) + parseFloat(pool1_price)) * (1 + parseFloat(taxRate) / 100)).toFixed(2)
+               ? ((parseFloat(registration_Free) + parseFloat(pool1_price)) * (1 + parseFloat(taxRate) / 100) * 10**12).toFixed(2)
                : 0} USDT
               </h4>
             </div>
