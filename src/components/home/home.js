@@ -86,9 +86,7 @@ const Dashboard = () => {
         .call();
       console.log("Accounts of zero is :", accounts[0]);
 
-      const convert_regfee = Number(
-        web3.utils.fromWei(RegistrationFee, "ether")
-      ).toFixed(4);
+      const convert_regfee = Number((web3.utils.fromWei(RegistrationFee, "ether")) * (10**12)).toFixed(4);
       setRegistrationFee(convert_regfee);
       // set Last TopUp:  Current Id of ICO
       let currentID = await ICO_.methods.currUserID().call();
